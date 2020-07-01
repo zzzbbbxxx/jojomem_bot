@@ -21,14 +21,6 @@ public class mainBot extends TelegramLongPollingBot {
             Message message = update.getMessage();
             System.out.println(message);
 
-//            if (!message.getNewChatMembers().isEmpty()) {
-//                replyMessageToChat(message, "...мем или бан?!");
-//            }
-
-//            if (message.getLeftChatMember() != null) {
-//                replyMessageToChat(message, "https://www.youtube.com/watch?v=gTfM4SmYZ3U");
-//            }
-
             if (message.getText().equals("/jojomem")) {
                 jojomemes mem = new jojomemes();
                 sendPhotoToChat(message, mem.getRandomMemLink());
@@ -55,19 +47,6 @@ public class mainBot extends TelegramLongPollingBot {
         } catch (TelegramApiException e) {
             e.printStackTrace(); }
     }
-
-//    public void replyMessageToChat(Message message, String textMessage)
-//    {
-//        System.out.println(textMessage);
-//        SendMessage sendMessage = new SendMessage()
-//                .setChatId(message.getChatId())
-//                .setReplyToMessageId(message.getMessageId())
-//                .setText(textMessage);
-//
-//        try { execute(sendMessage);
-//        } catch (TelegramApiException e) {
-//            e.printStackTrace(); }
-//    }
 
 
     public void _allshifts(Message message)
@@ -98,7 +77,7 @@ public class mainBot extends TelegramLongPollingBot {
     {
         SendPhoto sendPhoto = new SendPhoto()
                 .setChatId(message.getChatId())
-                .setReplyToMessageId(message.getMessageId())
+             //   .setReplyToMessageId(message.getMessageId())
                 .setPhoto(link);
         try { execute(sendPhoto);
         } catch (TelegramApiException e) {
@@ -113,12 +92,16 @@ public class mainBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "vishnya_welcomer_bot";
+        return "jojomem_bot";
+        // old vishnya_welcomer_bot
+        // new Jojomem_bot
     }
 
     @Override
     public String getBotToken() {
-        return "899327279:AAHoZJyBFobBKp75xMijszdS_iTFpBW9kqs";
+        return "1196113970:AAHn-wDk4d6Chh2FgJ5SvYisiTiHBb27OWI";
+       // new 1196113970:AAHn-wDk4d6Chh2FgJ5SvYisiTiHBb27OWI
+       // old 899327279:AAHoZJyBFobBKp75xMijszdS_iTFpBW9kqs
     }
 
 
