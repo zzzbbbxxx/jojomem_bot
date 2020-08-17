@@ -1,6 +1,5 @@
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.ParseMode;
-import org.telegram.telegrambots.meta.api.methods.groupadministration.KickChatMember;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.Message;
@@ -77,7 +76,6 @@ public class mainBot extends TelegramLongPollingBot {
     {
         SendPhoto sendPhoto = new SendPhoto()
                 .setChatId(message.getChatId())
-             //   .setReplyToMessageId(message.getMessageId())
                 .setPhoto(link);
         try { execute(sendPhoto);
         } catch (TelegramApiException e) {
@@ -93,15 +91,11 @@ public class mainBot extends TelegramLongPollingBot {
     @Override
     public String getBotUsername() {
         return "jojomem_bot";
-        // old vishnya_welcomer_bot
-        // new Jojomem_bot
-    }
+        }
 
     @Override
     public String getBotToken() {
         return "1196113970:AAHn-wDk4d6Chh2FgJ5SvYisiTiHBb27OWI";
-       // new 1196113970:AAHn-wDk4d6Chh2FgJ5SvYisiTiHBb27OWI
-       // old 899327279:AAHoZJyBFobBKp75xMijszdS_iTFpBW9kqs
     }
 
 
