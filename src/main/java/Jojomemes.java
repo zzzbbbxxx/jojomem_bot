@@ -8,7 +8,6 @@ import java.util.*;
 
 public class Jojomemes {
 
-    public static ArrayList<String> memsString = new ArrayList<String>();
     public static ArrayList<Mem> mems = new ArrayList<Mem>();
 
     public static Document openRedditPage(String html){
@@ -41,7 +40,6 @@ public class Jojomemes {
 
             for (Element e: elements_post)
                 if (isImage(e.attr("data-url"))) {
-                    memsString.add(e.attr("data-url"));
                     mems.add(new Mem(e.attr("data-url"),
                                      e.attr("data-score"),
                                      e.attr("data-permalink")));
@@ -66,18 +64,14 @@ public class Jojomemes {
 
     public static String getRandomMemFromBest(){
 
-
         int size = mems.size()-1;
         int halfsize = size / 2;
         int index = randInt(halfsize,size);
 
-        System.out.println(size + " " + halfsize + " " + index);
-        System.out.println(mems.get(index).getData_score());
-        System.out.println(mems.get(index).getImage());
-        System.out.println(mems.get(index).getLink());
-
         String link = mems.get(index).getLink();
         mems.remove(mems.get(index));
+
+        if ( size < 300 ) parceRedditJojoSubreddit();
 
         return link;
 
