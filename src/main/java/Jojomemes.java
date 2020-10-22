@@ -41,6 +41,7 @@ public class Jojomemes {
             for (Element e: elements_post)
                 if (isImage(e.attr("data-url"))) {
                     mems.add(new Mem(e.attr("data-url"),
+                                     e.attr("data-timestamp"),
                                      e.attr("data-score"),
                                      e.attr("data-permalink")));
 
@@ -53,16 +54,54 @@ public class Jojomemes {
 
         } while (!elements_post.isEmpty());
 
+
+
+    }
+
+    public static void sortByScore(){
+
         Collections.sort(mems, new Comparator<Mem>(){
             public int compare(Mem s1, Mem s2) {
-                return s1.getData_score().compareTo(s2.getData_score());
+                return s1.getDataScore().compareTo(s2.getDataScore());
             }
         });
 
     }
 
 
+    public static void sortByDate(){
+
+        Collections.sort(mems, new Comparator<Mem>(){
+            public int compare(Mem s1, Mem s2) {
+                Long l1 = Long.parseLong(s1.getTimestamp());
+                Long l2 = Long.parseLong(s2.getTimestamp());
+                return l1.compareTo(l2);
+            }
+        });
+
+    }
+
+    public static String getNewMem(){
+
+        sortByDate();
+
+        int size = mems.size()-1;
+        int halfsize = size / 2;
+        int fourth = size / 4;
+        int index = randInt(halfsize+fourth,size);
+
+        String link = mems.get(index).getLink();
+        mems.remove(mems.get(index));
+
+        if ( size < 200 ) parceRedditJojoSubreddit();
+
+        return link;
+
+    }
+
     public static String getRandomMemFromBest(){
+
+        sortByScore();
 
         int size = mems.size()-1;
         int halfsize = size / 2;
@@ -71,7 +110,7 @@ public class Jojomemes {
         String link = mems.get(index).getLink();
         mems.remove(mems.get(index));
 
-        if ( size < 300 ) parceRedditJojoSubreddit();
+        if ( size < 200 ) parceRedditJojoSubreddit();
 
         return link;
 

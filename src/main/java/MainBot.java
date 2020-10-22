@@ -25,12 +25,33 @@ public class MainBot extends TelegramLongPollingBot {
         if (update.hasMessage()) {
 
             Message message = update.getMessage();
-            deleteMessage(message.getMessageId());
+
+
+            if (message.getText().equals("/start")) {
+                System.out.println(message);
+                deleteMessage(message.getMessageId());
+                sendPhotoToChat(message, Jojomemes.getRandomMemFromBest());
+            }
+
 
             if (message.getText().equals("/jojomem")) {
                 System.out.println(message);
+                deleteMessage(message.getMessageId());
                 sendPhotoToChat(message, Jojomemes.getRandomMemFromBest());
             }
+
+            if (message.getText().equals("getFromBest")) {
+                System.out.println(message);
+                deleteMessage(message.getMessageId());
+                sendPhotoToChat(message, Jojomemes.getRandomMemFromBest());
+            }
+
+            if (message.getText().equals("getFromNew")) {
+                System.out.println(message);
+                deleteMessage(message.getMessageId());
+                sendPhotoToChat(message, Jojomemes.getNewMem());
+            }
+
         }
     }
 
@@ -60,7 +81,9 @@ public class MainBot extends TelegramLongPollingBot {
         keyboard.clear();
         keyboardRow.clear();
 
-        keyboardRow.add("/jojomem");
+        keyboardRow.add("getFromBest");
+        keyboardRow.add("getFromNew");
+
         keyboard.add(keyboardRow);
 
         replyKeyboardMarkup.setKeyboard(keyboard);
