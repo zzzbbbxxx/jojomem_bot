@@ -33,13 +33,6 @@ public class MainBot extends TelegramLongPollingBot {
                 sendPhotoToChat(message, Jojomemes.getRandomMemFromBest());
             }
 
-
-            if (message.getText().equals("/jojomem")) {
-                System.out.println(message);
-                deleteMessage(message.getMessageId());
-                sendPhotoToChat(message, Jojomemes.getRandomMemFromBest());
-            }
-
             if (message.getText().equals("getFromBest")) {
                 System.out.println(message);
                 deleteMessage(message.getMessageId());
