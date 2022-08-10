@@ -103,14 +103,13 @@ public class Jojomemes {
 
         sortByScore();
 
-        int size = mems.size()-1;
-        int halfsize = size / 2;
-        int index = randInt(halfsize,size);
+        int halfsize = (mems.size()-1) / 2;
+        int index = randInt(halfsize,(mems.size()-1));
 
         String link = mems.get(index).getLink();
         mems.remove(mems.get(index));
 
-        if ( size < 200 ) parceRedditJojoSubreddit();
+        if ( mems.size()-1 < 200 ) parceRedditJojoSubreddit();
 
         return link;
 
